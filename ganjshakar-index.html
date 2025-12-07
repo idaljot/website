@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ganjshakar – Baba Farid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Ganjshakar.com – A doorway into the life, bani, and legacy of Baba Farid (Fariduddin Ganjshakar), his Punjabi poetry, and his connection to Guru Nanak and the Guru Granth Sahib." />
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #111827;
+      --card: #111827;
+      --accent: #fbbf24;
+      --accent-soft: rgba(251, 191, 36, 0.14);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --max-width: 1100px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 52%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.72),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.25);
+      background: radial-gradient(circle at 30% 0%, #fbbf24, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #111827;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9),
+                  0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.88rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      padding: 0.3rem 0.2rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      gap: 2.4rem;
+      padding: 2.4rem 0 2.8rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title-ganj {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .hero-pills {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 0.26rem 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-cta {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #f59e0b, #f97316);
+      color: #0b1020;
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 14px 40px rgba(248, 181, 35, 0.35);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      padding: 1.4rem 1.3rem;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(251, 191, 36, 0.14), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(52, 211, 153, 0.1), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-heading {
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-quote {
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-quote em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-quote-src {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.4rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.15rem 1.2rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      column-gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-kicker {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-top: 0.35rem;
+    }
+
+    li + li {
+      margin-top: 0.2rem;
+    }
+
+    .pillline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .pillline span {
+      font-size: 0.75rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.4rem;
+      border-left: 1px solid rgba(75, 85, 99, 0.7);
+    }
+
+    .timeline-item {
+      padding-left: 0.8rem;
+      position: relative;
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 0.4rem;
+      left: -5px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(248, 181, 35, 0.18);
+    }
+
+    .timeline-year {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .timeline-text {
+      font-size: 0.9rem;
+    }
+
+    .resources-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 0.7rem;
+    }
+
+    .resource-item {
+      font-size: 0.88rem;
+    }
+
+    .resource-item strong {
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.7);
+      margin-top: 2.4rem;
+      padding: 1.2rem 0 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Small screens */
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      nav {
+        display: none; /* keep it simple for v1; can add burger later */
+      }
+      .container {
+        padding-inline: 1rem;
+      }
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">گ</div>
+        <span>Ganjshakar</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#bani">Bani</a>
+        <a href="#gurus">Guru Nanak & Gurus</a>
+        <a href="#legacy">Legacy</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div>
+        <h1 id="hero-heading" class="hero-title">
+          <span class="hero-title-ganj">Ganjshakar</span>
+          <span>Baba Farid</span>
+        </h1>
+        <p class="hero-subtitle">
+          A quiet introduction to Farīduddīn Masūd Ganjshakar – Baba Farid –  
+          the Punjabi Sufi whose verses echo in everyday Punjabi speech and in the
+          pages of the Guru Granth Sahib.
+        </p>
+
+        <div class="hero-pills">
+          <div class="pill">Punjabi Sufi &amp; Mystic</div>
+          <div class="pill">Early Punjabi / Multani poet</div>
+          <div class="pill">Bhagat in Guru Granth Sahib</div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#bani">
+            <button class="btn-primary">Explore Farid’s bani</button>
+          </a>
+          <span class="hero-note">
+            Scroll down to read about his life, his verses, and the bridge
+            he forms between Sufi and Sikh traditions.
+          </span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Sample verse by Baba Farid">
+        <div class="hero-card-inner">
+          <div class="hero-card-heading">A line attributed to Baba Farid</div>
+          <p class="hero-quote">
+            <em>“Longing, longing we speak of – longing, you are the king.”</em>
+          </p>
+          <p class="hero-quote-src">
+            A famous Punjabi rendering of Baba Farid’s birha (longing for the Divine).
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Birha (longing)</span>
+            <span class="hero-tag">Humility</span>
+            <span class="hero-tag">God-remembrance</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-label">01 · Life & Background</div>
+      <h2 id="about-heading" class="section-title">Who was Baba Farid?</h2>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">Farīduddīn Masūd Ganjshakar</h3>
+            <span class="card-kicker">c. 1188 – 1266 CE</span>
+          </div>
+          <p class="muted">
+            Baba Farid – also known as Sheikh Farid Shakarganj or Ganjshakar –
+            was a Punjabi Muslim mystic of the Chishti Sufi order. Born near
+            Multan and later based in Ajodhan (present-day Pakpattan in
+            Punjab, Pakistan), he became one of the earliest and most influential
+            Punjabi-language spiritual poets.
+          </p>
+          <ul>
+            <li><strong>Order:</strong> Chishti Sufi silsila, in the lineage of Khwaja Moinuddin Chishti.</li>
+            <li><strong>Teacher:</strong> Qutbuddin Bakhtiar Kaki of Delhi.</li>
+            <li><strong>Main centre:</strong> Ajodhan / Pakpattan, where his shrine still draws pilgrims from many faiths.</li>
+          </ul>
+          <div class="pillline">
+            <span>Multan · Ajodhan / Pakpattan</span>
+            <span>Chishti Silsila</span>
+            <span>Pioneer of Punjabi verse</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">Why “Ganjshakar”?</h3>
+            <span class="card-kicker">The “treasure of sugar”</span>
+          </div>
+          <p class="muted">
+            The title <strong>Ganj-i-Shakar</strong> (or Shakarganj) literally means
+            “treasure of sugar”. In Sufi lore it reflects both the sweetness of
+            his character and the sweetness of Divine grace experienced through
+            remembrance of God. Over time, “Baba Farid Ganjshakar” became the
+            affectionate name by which people remembered him across Punjab.
+          </p>
+          <p class="muted" style="margin-top:0.35rem;">
+            His message travelled not only through formal teaching but through
+            short, memorable couplets that villagers could sing, repeat, and
+            carry into their everyday lives.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bani & Writings -->
+    <section id="bani" aria-labelledby="bani-heading">
+      <div class="section-label">02 · Bani & Writings</div>
+      <h2 id="bani-heading" class="section-title">
+        Farid’s Punjabi voice & his bani in Guru Granth Sahib
+      </h2>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">Language, style, and themes</h3>
+            <span class="card-kicker">Early Punjabi / Multani</span>
+          </div>
+          <p class="muted">
+            Baba Farid is widely recognised as one of the first major poets to
+            use <strong>Punjabi (Multani / Lehndi)</strong> as a language of refined
+            spiritual expression at a time when Persian, Arabic, and Sanskrit
+            dominated formal learning.
+          </p>
+          <ul>
+            <li><strong>Language:</strong> earthy Punjabi full of village idioms, yet spiritually deep.</li>
+            <li><strong>Recurring themes:</strong> impermanence of the body, humility, honest labour, remembrance of the Divine Name, and compassion for the poor.</li>
+            <li><strong>Tone:</strong> intimate, often voiced as a soul speaking to the Beloved or warning itself against ego and forgetfulness.</li>
+          </ul>
+          <p class="muted" style="margin-top:0.35rem;">
+            Later Sikh Gurus recognised that these verses carried a fragrance
+            very close to the Gurmat vision – and preserved them as bani.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">Farid in the Guru Granth Sahib</h3>
+            <span class="card-kicker">Bhagat Farid Ji</span>
+          </div>
+          <p class="muted">
+            In Sikh tradition, Baba Farid appears in the Guru Granth Sahib as
+            <strong>Bhagat Sheikh Farid Ji</strong>, one of the fifteen Bhagats whose
+            bani stands alongside that of the ten Sikh Gurus.
+          </p>
+          <ul>
+            <li>His verses are mainly short <strong>saloks</strong> (couplets) and a few longer <strong>shabads</strong>.</li>
+            <li>Traditionally Sikhs speak of <strong>4 shabads and 112 saloks</strong> of Farid in the Guru Granth Sahib, often summarised as about <strong>134 hymns</strong>.</li>
+            <li>The saloks appear towards the end of the scripture, on pages (angs) 1377–1384 in standard prints.</li>
+          </ul>
+          <p class="muted" style="margin-top:0.35rem;">
+            Through the Guru Granth Sahib, Farid’s voice flows into the daily
+            liturgy and devotional life of Sikhs across the world.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Connection to Sikh Gurus -->
+    <section id="gurus" aria-labelledby="gurus-heading">
+      <div class="section-label">03 · A Bridge Between Traditions</div>
+      <h2 id="gurus-heading" class="section-title">
+        Baba Farid, Guru Nanak, and the Sikh Gurus
+      </h2>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">Spiritual resonance with Guru Nanak</h3>
+            <span class="card-kicker">Shared concerns, different centuries</span>
+          </div>
+          <p class="muted">
+            Whether one follows the view that the bani comes from the
+            12–13th-century Farid of Pakpattan, or from a slightly later
+            successor known as Farid Sani (Sheikh Brahm), Sikh tradition is
+            clear on one thing: <strong>Guru Nanak recognised deep truth in
+            Farid’s verses.</strong>
+          </p>
+          <p class="muted" style="margin-top:0.35rem;">
+            Stories in Sikh sources describe Guru Nanak visiting Pakpattan,
+            encountering the house of Farid, and engaging closely with the
+            spiritual inheritance preserved there. Over time, selected verses
+            were lovingly carried into the emerging Sikh scriptural tradition.
+          </p>
+          <ul>
+            <li>Both Guru Nanak and Farid speak sharply against ego, injustice, and empty ritual.</li>
+            <li>Both emphasise remembrance of the Divine in everyday work and family life.</li>
+            <li>Their language is deeply rooted in Punjabi soil while pointing beyond all boundaries.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">From oral circulation to Guru Granth Sahib</h3>
+            <span class="card-kicker">Guru Arjan’s compilation</span>
+          </div>
+          <p class="muted">
+            When the fifth Sikh Guru, <strong>Guru Arjan</strong>, compiled the
+            <em>Adi Granth</em> (the core of today’s Guru Granth Sahib) in 1604,
+            he chose to include Farid’s verses alongside the bani of the Gurus
+            and other Bhagats.
+          </p>
+          <ul>
+            <li>This inclusion signals both <strong>respect</strong> for Farid as a realised soul and a recognition that Truth shines in many houses.</li>
+            <li>Farid’s saloks are arranged so that Guru Nanak and later Gurus sometimes respond to them, creating a quiet dialogue across centuries.</li>
+            <li>For Sikhs, this shows that the Guru’s light is not confined to one community or label.</li>
+          </ul>
+          <p class="muted" style="margin-top:0.35rem;">
+            In this way, Baba Farid stands as a bridge between Sufi and Sikh
+            lineages – not by erasing either, but by pointing both towards the
+            same timeless Beloved.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Legacy & Timeline -->
+    <section id="legacy" aria-labelledby="legacy-heading">
+      <div class="section-label">04 · Legacy</div>
+      <h2 id="legacy-heading" class="section-title">
+        Timeline & living legacy of Ganjshakar
+      </h2>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">A short historical sketch</h3>
+            <span class="card-kicker">Key moments</span>
+          </div>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-year">c. 1188</div>
+              <div class="timeline-text">
+                Birth near Multan in the Punjab region (now in Pakistan), in a family
+                connected to early Chishti Sufi circles.
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-year">Youth</div>
+              <div class="timeline-text">
+                Studies in Multan; meets Khwaja Qutbuddin Bakhtiar Kaki and becomes
+                his disciple, later travelling to Delhi and beyond.
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-year">Later life</div>
+              <div class="timeline-text">
+                Settles in Ajodhan (Pakpattan) as a major Sufi centre. His simple,
+                piercing Punjabi couplets spread across villages and trade routes.
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-year">c. 1266</div>
+              <div class="timeline-text">
+                Leaves the world in Pakpattan. His shrine becomes a major place of
+                pilgrimage and langar for people of many backgrounds.
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-year">16th–17th c.</div>
+              <div class="timeline-text">
+                Guru Nanak and the Sikh Gurus engage with Farid’s spiritual
+                inheritance; Guru Arjan formally includes Farid’s verses in the
+                Adi Granth.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">How his presence is felt today</h3>
+            <span class="card-kicker">Across communities</span>
+          </div>
+          <p class="muted">
+            Baba Farid’s name appears on
+            towns, gurdwaras, shrines, and institutions across Punjab and beyond.
+            His couplets are quoted in folk songs, kirtan, qawwali, and everyday
+            sayings.
+          </p>
+          <ul>
+            <li><strong>In Sufism:</strong> remembered as a great Chishti master whose shrine and langar welcome all.</li>
+            <li><strong>In Sikh tradition:</strong> honoured as Bhagat Farid Ji, whose bani is part of Guru Granth Sahib and daily recitation.</li>
+            <li><strong>In Punjabi culture:</strong> seen as a founding voice of Punjabi literature and a symbol of shared spiritual heritage.</li>
+          </ul>
+          <p class="muted" style="margin-top:0.35rem;">
+            Ganjshakar.com is a small attempt to keep that shared legacy visible:
+            a place to learn, listen, and reflect without drawing hard lines
+            between communities that have loved him for centuries.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" aria-labelledby="resources-heading">
+      <div class="section-label">05 · Keep Exploring</div>
+      <h2 id="resources-heading" class="section-title">
+        Listen, read, and go deeper
+      </h2>
+
+      <p class="muted">
+        This site is meant as a gentle doorway, not a final word. Here are
+        starting points you can later turn into a dedicated “Resources” page
+        with proper attributions, translations, and media embeds:
+      </p>
+
+      <div class="resources-list" aria-label="External resources">
+        <div class="resource-item">
+          <strong>Read Farid’s saloks</strong>
+          <span class="muted">
+            Explore printed or digital editions of the Guru Granth Sahib  
+            (look for Bhagat Sheikh Farid Ji’s saloks on angs 1377–1384 in most
+            standard printings).
+          </span>
+        </div>
+        <div class="resource-item">
+          <strong>Listen to kirtan & recitations</strong>
+          <span class="muted">
+            Many Sikh and Sufi musicians have recorded Farid’s verses in kirtan
+            and qawwali styles. You can embed curated playlists from platforms
+            like YouTube or Spotify here.
+          </span>
+        </div>
+        <div class="resource-item">
+          <strong>Study guides & commentary</strong>
+          <span class="muted">
+            Sikh and Sufi scholars have written commentaries on Farid’s teachings
+            and their ethical and spiritual implications. Over time, this section
+            can host short essays, lecture links, and reading lists.
+          </span>
+        </div>
+        <div class="resource-item">
+          <strong>Visiting historic sites</strong>
+          <span class="muted">
+            Pakpattan, Faridkot, and gurdwaras dedicated to Baba Farid Ji and his
+            bani keep his memory alive in stone and song. A future version of
+            this site could map these places for visitors.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> Ganjshakar.com · A quiet space to reflect on
+        Baba Farid’s life, bani, and legacy.
+        <br />
+        <strong>Site created and maintained by
+          <a href="https://daljotsingh.com" target="_blank" rel="noopener noreferrer">
+            Daljot Singh
+          </a>
+        </strong>
+      </div>
+      <div>
+        You can extend this site with translations, audio, and a gallery as the
+        sangat around Baba Farid grows.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
